@@ -1,5 +1,7 @@
 
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 public class PalindromeCheckerApp {
 
 
@@ -123,6 +125,46 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("Original String : " + input1);
             System.out.println("Reversed String : " + reversed2);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
+
+        String input2 = "level";
+
+        // Create Queue (FIFO)
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create Stack (LIFO)
+        Stack<Character> stack1 = new Stack<>();
+
+        // Enqueue and Push characters
+        for (int i = 0; i < input2.length(); i++) {
+            char ch = input2.charAt(i);
+            queue.add(ch);     // Enqueue (FIFO)
+            stack1.push(ch);    // Push (LIFO)
+        }
+
+        boolean isPalindrome1 = true;
+
+        // Compare Dequeue and Pop
+        while (!queue.isEmpty()) {
+
+            char fromQueue = queue.remove(); // Dequeue
+            char fromStack = stack1.pop();    // Pop
+
+            if (fromQueue != fromStack) {
+                isPalindrome1 = false;
+                break;
+            }
+        }
+
+        // Display result
+        if (isPalindrome1) {
+            System.out.println("Original String : " + input2);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + input2);
             System.out.println("Result : It is NOT a Palindrome.");
         }
 
