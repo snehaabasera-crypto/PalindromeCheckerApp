@@ -35,7 +35,30 @@ public class PalindromeCheckerApp {
             System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
         }
 
-        // Program ends
+
+        System.out.println("Program executed successfully.");
+
+        String original = "level";
+
+
+        String reversed1 = "";
+
+
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed1 = reversed1 + original.charAt(i);
+        }
+
+
+        if (original.equals(reversed1)) {
+            System.out.println("Original String : " + original);
+            System.out.println("Reversed String : " + reversed1);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + original);
+            System.out.println("Reversed String : " + reversed1);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
         System.out.println("Program executed successfully.");
     }
 
