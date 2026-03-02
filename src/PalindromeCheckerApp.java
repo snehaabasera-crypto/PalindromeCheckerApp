@@ -30,6 +30,32 @@ public class PalindromeCheckerApp {
         return isPalindrome4(str, start + 1, end - 1);
     }
 
+    static class PalindromeChecker {
+
+        // Method to check palindrome using character array (Two-pointer approach)
+        public boolean checkPalindrome(String input) {
+
+            if (input == null) {
+                return false;
+            }
+
+            char[] characters = input.toCharArray();
+
+            int start = 0;
+            int end = characters.length - 1;
+
+            while (start < end) {
+                if (characters[start] != characters[end]) {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+
+            return true;
+        }
+    }
+
 
 
     public static void main(String[] args) {
@@ -334,6 +360,26 @@ public class PalindromeCheckerApp {
 
         if (isPalindrome5) {
             System.out.println("Result : It is a Palindrome (Ignoring spaces & case).");
+        } else {
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
+
+
+        String input7 = "radar";
+
+        // Create service object
+        PalindromeChecker checker = new PalindromeChecker();
+
+        // Call encapsulated method
+        boolean result1 = checker.checkPalindrome(input);
+
+        // Display result
+        System.out.println("Input String : " + input7);
+
+        if (result1) {
+            System.out.println("Result : It is a Palindrome.");
         } else {
             System.out.println("Result : It is NOT a Palindrome.");
         }
