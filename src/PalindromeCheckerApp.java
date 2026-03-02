@@ -119,6 +119,59 @@ public class PalindromeCheckerApp {
         }
     }
 
+    // Two-Pointer Method
+    public static boolean twoPointerCheck(String str) {
+
+        int start2 = 0;
+        int end2 = str.length() - 1;
+
+        while (start2 < end2) {
+            if (str.charAt(start2) != str.charAt(end2)) {
+                return false;
+            }
+            start2++;
+            end2--;
+        }
+
+        return true;
+    }
+
+    // Stack Method
+    public static boolean stackCheck(String str) {
+
+        Stack<Character> stack1 = new Stack<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            stack1.push(str.charAt(i));
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != stack1.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // Deque Method
+    public static boolean dequeCheck(String str) {
+
+        Deque<Character> deque1 = new LinkedList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            deque1.addLast(str.charAt(i));
+        }
+
+        while (deque1.size() > 1) {
+            if (deque1.removeFirst() != deque1.removeLast()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 
 
@@ -469,6 +522,42 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Strategy Used : " + strategy.getClass().getSimpleName());
+        System.out.println("Program executed successfully.");
+
+        String input9 = "AmanaplanacanalPanama";
+        input9 = input9.toLowerCase();
+
+        System.out.println("Input String : " + input9);
+        System.out.println("--------------------------------------");
+
+        // 1️⃣ Two-Pointer Approach
+        long start2 = System.nanoTime();
+        boolean result3 = twoPointerCheck(input);
+        long end2= System.nanoTime();
+
+        // 2️⃣ Stack Approach
+        long start3 = System.nanoTime();
+        boolean result4 = stackCheck(input);
+        long end3 = System.nanoTime();
+
+        // 3️⃣ Deque Approach
+        long start4 = System.nanoTime();
+        boolean result5 = dequeCheck(input);
+        long end4 = System.nanoTime();
+
+        // Display Results
+        System.out.println("Two-Pointer Result : " + result3);
+        System.out.println("Execution Time     : " + (end2 - start2) + " ns");
+        System.out.println();
+
+        System.out.println("Stack Result       : " + result4);
+        System.out.println("Execution Time     : " + (end3 - start3) + " ns");
+        System.out.println();
+
+        System.out.println("Deque Result       : " + result5);
+        System.out.println("Execution Time     : " + (end4 - start4) + " ns");
+        System.out.println();
+
         System.out.println("Program executed successfully.");
 
 
