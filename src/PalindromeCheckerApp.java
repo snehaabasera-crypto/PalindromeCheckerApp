@@ -1,3 +1,5 @@
+
+import java.util.Stack;
 public class PalindromeCheckerApp {
 
 
@@ -90,6 +92,37 @@ public class PalindromeCheckerApp {
             System.out.println("Result : It is a Palindrome.");
         } else {
             System.out.println("Original String : " + input);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
+
+        String input1 = "madam";
+
+        // Create Stack
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters into stack
+        for (int i = 0; i < input1.length(); i++) {
+            stack.push(input1.charAt(i));
+        }
+
+        // Variable to store reversed string
+        String reversed2 = "";
+
+        // Pop characters from stack
+        while (!stack.isEmpty()) {
+            reversed2 = reversed2 + stack.pop();
+        }
+
+        // Compare original and reversed
+        if (input.equals(reversed2)) {
+            System.out.println("Original String : " + input1);
+            System.out.println("Reversed String : " + reversed2);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + input1);
+            System.out.println("Reversed String : " + reversed2);
             System.out.println("Result : It is NOT a Palindrome.");
         }
 
