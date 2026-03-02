@@ -14,6 +14,23 @@ public class PalindromeCheckerApp {
         }
     }
 
+    public static boolean isPalindrome4(String str, int start, int end) {
+
+        // Base Condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If characters don't match
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call
+        return isPalindrome4(str, start + 1, end - 1);
+    }
+
+
 
     public static void main(String[] args) {
 
@@ -272,6 +289,20 @@ public class PalindromeCheckerApp {
             System.out.println("Result : It is a Palindrome.");
         } else {
             System.out.println("Original String : " + input4);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
+
+        String input5 = "level";
+
+        boolean result = isPalindrome4(input, 0, input5.length() - 1);
+
+        if (result) {
+            System.out.println("Original String : " + input5);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + input5);
             System.out.println("Result : It is NOT a Palindrome.");
         }
 
