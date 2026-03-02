@@ -308,6 +308,38 @@ public class PalindromeCheckerApp {
 
         System.out.println("Program executed successfully.");
 
+        String input6 = "A man a plan a canal Panama";
+
+        // Step 1: Normalize String
+        String normalized = input6.replaceAll("\\s+", "").toLowerCase();
+
+        // Step 2: Apply palindrome logic (Two-pointer approach)
+        boolean isPalindrome5 = true;
+
+        int start1 = 0;
+        int end1 = normalized.length() - 1;
+
+        while (start1 < end1) {
+            if (normalized.charAt(start1) != normalized.charAt(end1)) {
+                isPalindrome5 = false;
+                break;
+            }
+            start1++;
+            end1--;
+        }
+
+        // Display result
+        System.out.println("Original String   : " + input6);
+        System.out.println("Normalized String : " + normalized);
+
+        if (isPalindrome5) {
+            System.out.println("Result : It is a Palindrome (Ignoring spaces & case).");
+        } else {
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
+
 
 
     }
