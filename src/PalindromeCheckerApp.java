@@ -56,6 +56,70 @@ public class PalindromeCheckerApp {
         }
     }
 
+    interface PalindromeStrategy {
+        boolean check(String input);
+    }
+
+    static class StackStrategy implements PalindromeStrategy {
+
+        @Override
+        public boolean check(String input) {
+
+            Stack<Character> stack = new Stack<>();
+
+            for (int i = 0; i < input.length(); i++) {
+                stack.push(input.charAt(i));
+            }
+
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) != stack.pop()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    class DequeStrategy implements PalindromeStrategy {
+
+        @Override
+        public boolean check(String input) {
+
+            Deque<Character> deque = new LinkedList<>();
+
+            for (int i = 0; i < input.length(); i++) {
+                deque.addLast(input.charAt(i));
+            }
+
+            while (deque.size() > 1) {
+                if (deque.removeFirst() != deque.removeLast()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+
+    static class PalindromeService {
+
+        private PalindromeStrategy strategy;
+
+        public PalindromeService(PalindromeStrategy strategy) {
+            this.strategy = strategy;
+        }
+
+        public void setStrategy(PalindromeStrategy strategy) {
+            this.strategy = strategy;
+        }
+
+        public boolean execute(String input) {
+            return strategy.check(input);
+        }
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -384,6 +448,27 @@ public class PalindromeCheckerApp {
             System.out.println("Result : It is NOT a Palindrome.");
         }
 
+        System.out.println("Program executed successfully.");
+
+        String input8 = "racecar";
+
+        // Choose strategy dynamically
+        PalindromeStrategy strategy = new StackStrategy();
+        // Try changing to: new DequeStrategy();
+
+        PalindromeService service = new PalindromeService(strategy);
+
+        boolean result2 = service.execute(input8);
+
+        System.out.println("Input String : " + input8);
+
+        if (result2) {
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Strategy Used : " + strategy.getClass().getSimpleName());
         System.out.println("Program executed successfully.");
 
 
