@@ -60,6 +60,40 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Program executed successfully.");
+
+        String input = "radar";
+
+        // Convert String to Character Array
+        char[] characters = input.toCharArray();
+
+        // Two-pointer variables
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
+        }
+
+        // Display result
+        if (isPalindrome) {
+            System.out.println("Original String : " + input);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + input);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
     }
 
 }
