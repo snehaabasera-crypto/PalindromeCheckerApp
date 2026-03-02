@@ -1,6 +1,7 @@
 
 import java.util.Stack;
 import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
 public class PalindromeCheckerApp {
 
@@ -169,7 +170,44 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Program executed successfully.");
+
+        String input3 = "racecar";
+
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
+
+        // Insert characters into deque (rear)
+        for (int i = 0; i < input3.length(); i++) {
+            deque.addLast(input3.charAt(i));
+        }
+
+        boolean isPalindrome2 = true;
+
+        // Compare front and rear
+        while (deque.size() > 1) {
+
+            char front = deque.removeFirst(); // Remove from front
+            char rear = deque.removeLast();   // Remove from rear
+
+            if (front != rear) {
+                isPalindrome2 = false;
+                break;
+            }
+        }
+
+        // Display result
+        if (isPalindrome2) {
+            System.out.println("Original String : " + input3);
+            System.out.println("Result : It is a Palindrome.");
+        } else {
+            System.out.println("Original String : " + input3);
+            System.out.println("Result : It is NOT a Palindrome.");
+        }
+
+        System.out.println("Program executed successfully.");
     }
 
 }
+
+
 
